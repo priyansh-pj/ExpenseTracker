@@ -1,21 +1,37 @@
-import Expenses from "./components/Expenses";
-
+import { useState } from "react";
+import Expenses from "./components/Expense/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 function App() {
-  let expense = [
+  let [expense, setExpense] = useState([
     {
-      id: "1",
-      title: "Car Insurance",
-      date: new Date(2023, 2, 29),
-      amount: 2331.34,
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
     },
-    { id: "2", title: "VR", date: new Date(2023, 3, 3), amount: 31124.12 },
-    { id: "3", title: "Mobile", date: new Date(2023, 0, 12), amount: 1341.0 },
-  ];
+    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ]);
+
+  const setExpenseData = (ExpenseData) => {
+    // console.log(ExpenseData);
+    setExpense((previous) => [{ ...ExpenseData, id: "4" }, ...previous]);
+  };
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <p>This is also visible!</p>
-      <Expenses expense={expense}/>
+      <NewExpense getExpenseData={setExpenseData} />
+      <Expenses expense={expense} />
     </div>
   );
 }
