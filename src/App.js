@@ -2,7 +2,7 @@ import { useState } from "react";
 import Expenses from "./components/Expense/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 function App() {
-  let [expense, setExpense] = useState([
+  const [expense, setExpense] = useState([
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -26,7 +26,7 @@ function App() {
 
   const setExpenseData = (ExpenseData) => {
     // console.log(ExpenseData);
-    setExpense((previous) => [{ ...ExpenseData, id: "4" }, ...previous]);
+    setExpense((previous) => [{ ...ExpenseData, id: Math.random()}, ...previous]);
   };
   return (
     <div>
